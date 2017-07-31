@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170731004328) do
+ActiveRecord::Schema.define(version: 20170731004645) do
+
+  create_table "matches", force: :cascade do |t|
+    t.integer "user1_id"
+    t.integer "user2_id"
+    t.date "date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "standbies", force: :cascade do |t|
     t.integer "user_id"
