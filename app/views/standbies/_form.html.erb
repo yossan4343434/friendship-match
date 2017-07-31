@@ -1,0 +1,27 @@
+<%= form_with(model: standby, local: true) do |form| %>
+  <% if standby.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(standby.errors.count, "error") %> prohibited this standby from being saved:</h2>
+
+      <ul>
+      <% standby.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :user_id %>
+    <%= form.number_field :user_id, id: :standby_user_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :date %>
+    <%= form.date_select :date, id: :standby_date %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

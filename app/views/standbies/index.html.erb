@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Standbies</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Date</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @standbies.each do |standby| %>
+      <tr>
+        <td><%= standby.user_id %></td>
+        <td><%= standby.date %></td>
+        <td><%= link_to 'Show', standby %></td>
+        <td><%= link_to 'Edit', edit_standby_path(standby) %></td>
+        <td><%= link_to 'Destroy', standby, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Standby', new_standby_path %>

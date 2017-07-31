@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @standby.user_id %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @standby.date %>
+</p>
+
+<%= link_to 'Edit', edit_standby_path(@standby) %> |
+<%= link_to 'Back', standbies_path %>
