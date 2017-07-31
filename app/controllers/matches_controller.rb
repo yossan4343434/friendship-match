@@ -14,7 +14,7 @@ class MatchesController < ApplicationController
 
   # GET /matches/new
   def new
-    today = "2017-07-31"
+    today = Date.today.strftime
     standby_user_ids = Standby.where(date: today).pluck(:user_id).shuffle!
 
     standby_user_ids.each_slice(2) do |uid1, uid2|
@@ -75,19 +75,5 @@ class MatchesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def match_params
       params.require(:match).permit(:user1_id, :user2_id, :date)
-    end
-
-    def start_match
-      @match = Match.new(match_params)
-
-      respond_to do |format|
-        if @match.save
-          format.html { redirect_to @match, notice: 'Match was successfully created.' }
-          format.json { render :show, status: :created, location: @match }
-        else
-          format.html { render :new }
-          format.json { render json: @match.errors, status: :unprocessable_entity }
-        end
-      end
     end
 end
